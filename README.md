@@ -28,7 +28,7 @@ Built for the user who wants Grok as their daily driver: proactive briefs, task 
 
 - **Persistent Agent Mode** (ACP): Run as always-on assistant in terminal, IDEs (Zed, Neovim, etc.), or custom clients.
 - **Subagents + Personas**: Delegate to specialized workers (researcher, executor, reviewer, memory-keeper, comms-handler) in parallel.
-- **Skills**: Reusable workflows for daily-brief, task-orchestrator, file-assistant, personal-memory, comms-assistant.
+- **Skills**: Reusable workflows for daily-brief, task-orchestrator, file-assistant, personal-memory, comms-assistant, terminal-control, voice-processor.
 - **MCP Servers**: Extend with real computer tools — filesystem, shell/terminal, web, personal APIs (calendar, mail if available), notifications, Syncthing/Tailscale awareness, voice transcription integration.
 - **Headless + Background + Scheduler (/loop, monitor)**: Automate recurring tasks, long-running processes, cron-like personal workflows without blocking.
 - **Plan Mode + Meta Orchestration**: Use prime, meta-build for complex personal projects.
@@ -65,12 +65,14 @@ All filtered through Gold Hat: empower *you*, teach, respect autonomy, build lon
    - Background automation: Use monitor, /loop, background: true on tools.
 
 4. **Daily flow examples**
-   - Morning: "Run my daily brief" (pulls voice notes via ormus-voice/recorder, analyst, kalshi, web, personal projects).
+   - Morning: "Run my daily brief" (pulls voice notes via ormus-voice/recorder + voice-processor, analyst, kalshi, web, personal projects via file-assistant).
    - Tasks: "Orchestrate these items using task-orchestrator and subagents".
    - Comms: Use pull/push for incoming, comms-assistant skill.
+   - Terminal: "Launch ormus-term" or "monitor my system" via terminal-control.
    - Memory: "Distill this session into personal memory".
+   - Voice: "Process my latest voice notes" via voice-processor into actions/memory.
    - Deep work: meta-build + subagents for personal coding/life projects.
-   - Always-on: Run in background or agent mode with permissions set for your personal tools.
+   - Always-on: Run in background or agent mode with permissions set for your personal tools (ormus-term, voice, etc.).
 
 See `examples/` and individual skills for prompts, configs, and integration with your existing ormus personal tools (term, voice, analyst, kalshi, links, presentations, checkin, recorder).
 
@@ -78,9 +80,12 @@ See `examples/` and individual skills for prompts, configs, and integration with
 
 - **daily-brief/**: Proactive personal intelligence report (voice + data + projects + finance + research).
 - **task-orchestrator/**: Break down, delegate to subagents, execute, verify (best-of-n, check-work, meta-build).
-- **comms-assistant/**: Handle WhatsApp/pull/push, notifications, personal updates (integrates wa, pull, push).
+- **file-assistant/**: Navigate, search, organize, edit, backup personal files and projects using terminal tools safely.
 - **personal-memory/**: Distill sessions, maintain long-term personal context (distill + AGENTS + custom memory).
-- **agents/personal-assistant.md**: Example agent definition for "personal computer assistant" mode (tuned for daily driver use, your tools, Hermetic voice).
+- **comms-assistant/**: Handle WhatsApp/pull/push, notifications, personal updates (integrates wa, pull, push).
+- **terminal-control/**: Advanced terminal ops, process monitoring, background tasks, launch ormus-term/ghostty, system status (integrates ormus-term).
+- **voice-processor/**: Process ormus-voice / ormus-recorder notes, transcribe/summarize, extract actions to memory/tasks/briefs (integrates ormus-voice).
+- **agents/personal-assistant.md**: Example agent definition for "personal computer assistant" mode (tuned for daily driver use, your tools, Hermetic voice, subagents).
 - **examples/mcp/**: Config snippets for personal filesystem MCP, terminal/shell extensions, custom personal services (Tailscale/Syncthing aware, notifications).
 - **Setup examples**: Config.toml additions, permission whitelists for personal safety, headless scripts.
 
@@ -92,7 +97,7 @@ All skills are self-contained SKILL.md with frontmatter for auto-triggering. Add
 - **Tools**: [grok-build-skills](https://github.com/HermeticOrmus/grok-build-skills) (prime, meta-build, ship, best-of-n, check-work, help...) and [grok-skills](https://github.com/HermeticOrmus/grok-skills).
 - **Clean start**: [claude-exorcist](https://github.com/HermeticOrmus/claude-exorcist) + calcinate.
 - **Migration path**: [claude-to-grok](https://github.com/HermeticOrmus/claude-to-grok).
-- **Your existing personal tools**: ormus-analyst, ormus-kalshi, ormus-voice, ormus-term, ormus-recorder, pull/push/wa, etc. — the assistant orchestrates them.
+- **Your existing personal tools**: ormus-analyst, ormus-kalshi, ormus-voice, ormus-recorder, ormus-term, ormus-terminal-portal, ormus-checkin, ormus-links, ormus-presentations, pull/push/wa, etc. — the assistant orchestrates them via dedicated skills (voice-processor, terminal-control, etc.).
 
 This makes Grok Build *your* computer: proactive, personal, persistent, powerful, and principled.
 
