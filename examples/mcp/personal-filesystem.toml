@@ -1,0 +1,20 @@
+# Example MCP config snippet for personal computer assistant
+# Add to ~/.grok/config.toml under [mcp_servers]
+
+[mcp_servers.personal-filesystem]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-filesystem", "/home/ormus"]  # Scope to user's home/projects for safety
+env = {}
+enabled = true
+startup_timeout_sec = 10
+tool_timeout_sec = 30
+
+# Add more for personal needs:
+# - notifications (custom or via terminal)
+# - personal APIs (calendar, if you have MCP)
+# - Syncthing/Tailscale status wrappers
+# - voice/transcription if MCP available
+# - finance data (kalshi/analyst via API if exposed)
+
+# In personal-assistant sessions, enable relevant ones.
+# Use with file-assistant skills for safe, scoped personal ops.
