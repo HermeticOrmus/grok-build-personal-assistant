@@ -40,13 +40,16 @@ All filtered through Gold Hat: empower *you*, teach, respect autonomy, build lon
 
 ## Quick Start: Make Grok Build Your Personal Assistant
 
-1. **Install the kit**
+1. **Install the kit** (recommended)
    ```bash
    git clone https://github.com/HermeticOrmus/grok-build-personal-assistant ~/.grok/personal-assistant
+   cd ~/.grok/personal-assistant
+   ./setup.sh
    ```
 
-2. **Merge into your Grok setup** (see reality-os for full doctrine)
+   Or manual:
    ```bash
+   git clone https://github.com/HermeticOrmus/grok-build-personal-assistant ~/.grok/personal-assistant
    # Copy skills
    cp -r ~/.grok/personal-assistant/skills/* ~/.grok/skills/
 
